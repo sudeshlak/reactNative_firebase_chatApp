@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface npxTests : XCTestCase
+@interface reactNative_firebase_chatAppTests : XCTestCase
 
 @end
 
-@implementation npxTests
+@implementation reactNative_firebase_chatAppTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

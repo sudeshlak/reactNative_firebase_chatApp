@@ -1,4 +1,4 @@
-package com.npx;
+package com.reactnative_firebase_chatapp;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "npx";
+    return "reactNative_firebase_chatApp";
   }
 }
