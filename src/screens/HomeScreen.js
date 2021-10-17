@@ -51,9 +51,7 @@ export default function HomeScreen({navigation}) {
                     keyExtractor={(item) => item._id}
                     ItemSeparatorComponent={() => <Divider/>}
                     renderItem={({item}) => (
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate('Room', { thread: item })}
-                        >
+                        <TouchableOpacity onPress={() => navigation.navigate('Room', { thread: item })}>
                             <List.Item
                                 title={item.name}
                                 description='Item description'
