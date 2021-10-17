@@ -1,10 +1,13 @@
 import React, { createContext, useState } from 'react';
 import auth from '@react-native-firebase/auth';
+import { useContext, useEffect } from 'react';
+// import { AuthContext } from '../navigation/AuthProvider';
+
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-  
+
     return (
       <AuthContext.Provider
         value={{
