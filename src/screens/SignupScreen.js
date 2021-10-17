@@ -37,9 +37,9 @@ export default function SignupScreen({ navigation }) {
     const { register } = useContext(AuthContext);
     const [error,setError]= useState('');
 
-    function handleOnRegister() {
+    async function handleOnRegister() {
         setError('');
-        if(!email||password){
+        if (!email || !password) {
             setError('Invalid password or email')
             return;
         }
@@ -48,7 +48,7 @@ export default function SignupScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Title style={styles.titleText}>Register to chat</Title>
+            <Title style={styles.titleText}>Register to SChat</Title>
             <FormInput
                 labelName="Email"
                 value={email}
