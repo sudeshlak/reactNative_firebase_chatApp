@@ -4,6 +4,7 @@ import {IconButton, Title} from 'react-native-paper';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import firestore from '@react-native-firebase/firestore';
+import useStatsBar from '../utils/useStatusBar';
 
 
 const styles = StyleSheet.create({
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
 });
 
 export default function AddRoomScreen({navigation}) {
+    useStatsBar('dark-content');
     const [roomName, setRoomName] = useState('');
 
     // ... Firestore query will come here later

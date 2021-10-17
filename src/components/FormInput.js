@@ -11,13 +11,14 @@ const styles = StyleSheet.create({
       height: height / 15
     }
   });
-  
+
 export default function FormInput({ labelName, ...rest }) {
   return (
     <TextInput
       label={labelName}
       style={styles.input}
       numberOfLines={1}
+
       {...rest}
     />
   );
