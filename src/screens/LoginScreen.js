@@ -17,10 +17,14 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     loginButtonLabel: {
-        fontSize: 22
+        fontSize: 22,
     },
     navButtonText: {
         fontSize: 16
+    },
+    error:{
+        fontSize: 10,
+        color:'red',
     }
 });
 
@@ -28,10 +32,20 @@ export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('');
     const { login } = useContext(AuthContext);
     const [password, setPassword] = useState('');
+    const [error,setError]= useState('');
+
+    const handleOnLogin = () =>{
+        setError('')
+        if(!email||!password){
+            setError('Invalid password or email')
+            return;
+        }
+        login(email, password)
+    }
 
     return (
         <View style={styles.container}>
-            <Title style={styles.titleText}>Welcome to Chat app</Title>
+            <Title style={styles.titleText}>Welcome to SChat</Title>
             <FormInput
                 labelName="Email"
                 value={email}
@@ -44,11 +58,14 @@ export default function LoginScreen({ navigation }) {
                 secureTextEntry={true}
                 onChangeText={userPassword => setPassword(userPassword)}
             />
+            <Title style={styles.error}>
+                {error}
+            </Title>
             <FormButton
                 title="Login"
                 modeValue="contained"
                 labelStyle={styles.loginButtonLabel}
-                onPress={() => login(email, password)}
+                onPress={() => handleOnLogin()}
             />
             <FormButton
                 title="New user? Join here"

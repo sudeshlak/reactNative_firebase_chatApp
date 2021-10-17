@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
     },
     navButton: {
         marginTop: 10
+    },
+    error:{
+        fontSize: 10,
+        color:'red',
     }
 });
 
@@ -31,6 +35,16 @@ export default function SignupScreen({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { register } = useContext(AuthContext);
+    const [error,setError]= useState('');
+
+    function handleOnRegister() {
+        setError('');
+        if(!email||password){
+            setError('Invalid password or email')
+            return;
+        }
+        register(email, password)
+    }
 
     return (
         <View style={styles.container}>
@@ -47,11 +61,14 @@ export default function SignupScreen({ navigation }) {
                 secureTextEntry={true}
                 onChangeText={userPassword => setPassword(userPassword)}
             />
+            <Title style={styles.error}>
+                {error}
+            </Title>
             <FormButton
                 title="Signup"
                 modeValue="contained"
                 labelStyle={styles.loginButtonLabel}
-                onPress={() => register(email, password)}
+                onPress={() => handleOnRegister()}
             />
             <IconButton
                 icon="backspace"

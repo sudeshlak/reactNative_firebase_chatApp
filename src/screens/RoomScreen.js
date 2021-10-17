@@ -5,6 +5,7 @@ import {View, StyleSheet} from 'react-native';
 import { ActivityIndicator} from 'react-native';
 import {AuthContext} from "../navigation/AuthProvider";
 import firestore from '@react-native-firebase/firestore';
+import useStatsBar from '../utils/useStatusBar';
 const styles = StyleSheet.create({
     sendingContainer: {
         justifyContent: 'center',
@@ -25,7 +26,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 });
-export default function RoomScreen({route}) {
+
+export default function RoomScreen({ route }) {
+    useStatsBar('light-content');
     const { user } = useContext(AuthContext);
     const currentUser = user.toJSON();
     const { thread } = route.params;

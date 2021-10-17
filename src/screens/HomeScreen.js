@@ -8,8 +8,10 @@ import {FlatList} from 'react-native';
 import {List, Divider} from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import Loading from '../components/Loading';
+import useStatsBar from '../utils/useStatusBar'
 
 export default function HomeScreen({navigation}) {
+    useStatsBar('light-content');
     const {user, logout} = useContext(AuthContext);
     const [threads, setThreads] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,27 +50,27 @@ export default function HomeScreen({navigation}) {
 
 
     return (
-            <View style={styles.container}>
-                {/*<Title>Home Screen</Title>*/}
-                {/*<Title>All chat rooms will be listed here</Title>*/}
-                {/*<Title>{user.uid}</Title>*/}
-                <FlatList
-                    data={threads}
-                    keyExtractor={(item) => item._id}
-                    ItemSeparatorComponent={() => <Divider/>}
-                    renderItem={({item}) => (
-                        <TouchableOpacity onPress={() => navigation.navigate('Room', { thread: item })}>
-                            <List.Item
-                                title={item.name}
-                                description={item.latestMessage.text}
-                                titleNumberOfLines={1}
-                                titleStyle={styles.listTitle}
-                                descriptionStyle={styles.listDescription}
-                                descriptionNumberOfLines={1}
-                            />
-                        </TouchableOpacity>
-                    )}
-                />
+        <View style={styles.container}>
+            {/*<Title>Home Screen</Title>*/}
+            {/*<Title>All chat rooms will be listed here</Title>*/}
+            {/*<Title>{user.uid}</Title>*/}
+            <FlatList
+                data={threads}
+                keyExtractor={(item) => item._id}
+                ItemSeparatorComponent={() => <Divider/>}
+                renderItem={({item}) => (
+                    <TouchableOpacity onPress={() => navigation.navigate('Room', {thread: item})}>
+                        <List.Item
+                            title={item.name}
+                            description={item.latestMessage.text}
+                            titleNumberOfLines={1}
+                            titleStyle={styles.listTitle}
+                            descriptionStyle={styles.listDescription}
+                            descriptionNumberOfLines={1}
+                        />
+                    </TouchableOpacity>
+                )}
+            />
             <FormButton
                 modeValue="contained"
                 title="Logout"
