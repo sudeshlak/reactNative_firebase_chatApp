@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {GiftedChat, Bubble, Send} from 'react-native-gifted-chat';
+import {GiftedChat, Bubble, Send,  SystemMessage} from 'react-native-gifted-chat';
 import {IconButton} from 'react-native-paper';
 import {View, StyleSheet} from 'react-native';
 import { ActivityIndicator} from 'react-native';
@@ -18,6 +18,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    systemMessageText: {
+        fontSize: 14,
+        color: '#fff',
+        fontWeight: 'bold'
     }
 });
 export default function RoomScreen({route}) {
@@ -32,6 +37,16 @@ export default function RoomScreen({route}) {
             <View style={styles.loadingContainer}>
                 <ActivityIndicator size='large' color='#6646ee' />
             </View>
+        );
+    }
+
+    function renderSystemMessage(props) {
+        return (
+            <SystemMessage
+                {...props}
+                wrapperStyle={styles.systemMessageWrapper}
+                textStyle={styles.systemMessageText}
+            />
         );
     }
 
@@ -166,6 +181,7 @@ export default function RoomScreen({route}) {
             renderSend={renderSend}
             scrollToBottomComponent={scrollToBottomComponent}
             renderLoading={renderLoading}
+            renderSystemMessage={renderSystemMessage}
         />
     );
 }
