@@ -4,9 +4,8 @@ import Routes from './src/navigation/Routes';
 import LoginScreen from './src/screens/LoginScreen';
 
 const App = () => {
-
-  return (<Providers/>
-
+    return (
+      <Providers/>
   );
 };
 
